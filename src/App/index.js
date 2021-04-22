@@ -1,36 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import getJoke from '../helpers/data/jokeData';
 import './App.scss';
+import logo from '../jokegenjs 2.png';
 
 function App() {
-  const [domWriting, setDomWriting] = useState('Nothing Here!');
+  const [showJoke, setShowJoke] = useState({});
 
-  const handleClick = (e) => {
-    console.warn(`You clicked ${e.target.id}`);
-    setDomWriting(`You clicked ${e.target.id}! Check the Console!`);
+  const handleClick = () => {
+    console.warn(showJoke);
   };
+
+  useEffect(() => {
+    getJoke()
+      .then((joke) => {
+        setShowJoke(joke);
+      });
+  }, []);
 
   return (
     <div className='App'>
-      <h2>INSIDE APP COMPONENT</h2>
-      <div>
-        <button
-          id='this-button'
-          className='btn btn-info'
-          onClick={handleClick}
-        >
-          I am THIS button
+        <img src={logo} alt="Joke Header" />
+        <br/>
+        <h3>{showJoke.setup}</h3>
+        <button onClick={handleClick}>
+          CLICK HERE
         </button>
-      </div>
-      <div>
-        <button
-          id='that-button'
-          className='btn btn-primary mt-3'
-          onClick={handleClick}
-        >
-          I am THAT button
-        </button>
-      </div>
-      <h3>{domWriting}</h3>
+
     </div>
   );
 }

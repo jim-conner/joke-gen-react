@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background: #474747;
 }
 
 .App-logo {
@@ -36,13 +35,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.joke-container {
-  // display: flex;
-  // justify-content: center;
-  // position: absolute;
-  height: 735px;
-  background: #474747;
-  border-radius: 20px;
 }
