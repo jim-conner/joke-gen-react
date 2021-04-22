@@ -23,7 +23,7 @@ function App() {
         <br/>
         <h3>{showJoke.setup}</h3>
         <button onClick={handleClick}>
-          CLICK HERE
+          GET A JOKE
         </button>
 
     </div>
