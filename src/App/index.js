@@ -4,16 +4,30 @@ import './App.scss';
 import logo from '../jokegenjs 2.png';
 
 function App() {
-  const [showJoke, setShowJoke] = useState({});
+  const [getOneJoke, setGetOneJoke] = useState({});
+  const [showJoke, setShowJoke] = useState(false);
+  // const [showPunchline, setShowPunchline] = useState(false);
 
   const handleClick = () => {
-    console.warn(showJoke);
+    setShowJoke(true);
+    if (showJoke) {
+      setShowJoke(false);
+      getJoke()
+        .then((joke) => {
+          setGetOneJoke(joke);
+        });
+      // setGetOneJoke(getOneJoke);
+      // setGetAnotherJoke(getAnotherJoke);
+    } else {
+      setShowJoke(true);
+      // setShowPunchline(true);
+    }
   };
 
   useEffect(() => {
     getJoke()
       .then((joke) => {
-        setShowJoke(joke);
+        setGetOneJoke(joke);
       });
   }, []);
 
@@ -21,9 +35,16 @@ function App() {
     <div className='App'>
         <img src={logo} alt="Joke Header" />
         <br/>
-        <h3>{showJoke.setup}</h3>
+        <h2>{showJoke && getOneJoke.setup}</h2>
+        {/* <h2>{showPunchline && getOneJoke.punchline}</h2> */}
+
+        {/* <button onClick={handleClick}>
+          {showJoke ? 'e' : 'Get a Joke'}
+        </button> */}
+        <br />
+
         <button onClick={handleClick}>
-          GET A JOKE
+          {showJoke ? 'Get a New Joke' : 'Get a Joke'}
         </button>
 
     </div>
