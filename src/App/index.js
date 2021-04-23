@@ -6,7 +6,7 @@ import logo from '../jokegenjs 2.png';
 function App() {
   const [getOneJoke, setGetOneJoke] = useState({});
   const [showJoke, setShowJoke] = useState(false);
-  // const [showPunchline, setShowPunchline] = useState(false);
+  const [showPunchline, setShowPunchline] = useState(false);
 
   const handleClick = () => {
     setShowJoke(true);
@@ -20,7 +20,7 @@ function App() {
       // setGetAnotherJoke(getAnotherJoke);
     } else {
       setShowJoke(true);
-      // setShowPunchline(true);
+      console.warn(setShowPunchline);
     }
   };
 
@@ -36,10 +36,10 @@ function App() {
         <img src={logo} alt="Joke Header" />
         <br/>
         <h2>{showJoke && getOneJoke.setup}</h2>
-        {/* <h2>{showPunchline && getOneJoke.punchline}</h2> */}
+        <h2>{showPunchline && getOneJoke.punchline}</h2>
 
         {/* <button onClick={handleClick}>
-          {showJoke ? 'e' : 'Get a Joke'}
+          {showPunchline ? 'Get Punchline' : 'text here'}
         </button> */}
         <br />
 
