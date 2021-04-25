@@ -15,8 +15,6 @@ function App() {
     setShowJoke(true);
     if (showJoke) {
       setShowPunchline(true);
-    } else {
-      // e.preventDefault();
     }
   };
 
@@ -24,40 +22,41 @@ function App() {
     e.preventDefault();
     setShowJoke(false);
     setShowPunchline(false);
-    getJoke()
-      .then((joke) => {
-        setGetOneJoke(joke);
-        // console.warn(joke);
-      });
+    getJoke().then((joke) => {
+      setGetOneJoke(joke);
+    });
   };
 
   useEffect(() => {
-    getJoke()
-      .then((joke) => {
-        setGetOneJoke(joke);
-      });
+    getJoke().then((joke) => {
+      setGetOneJoke(joke);
+    });
   }, []);
 
   return (
     <div className='App'>
       <div>
-      <Card body inverse color="info">
-        <CardImg src={logo} alt="Joke Header" />
-        <CardBody>
-          <CardText>
-            <h2>{showJoke && getOneJoke.setup}</h2>
-            <h2>{showPunchline && getOneJoke.punchline}</h2>
-          </CardText>
-          <Button color="primary" onClick={handleClick}>
-            {showJoke ? 'Get a Punchline' : 'Get a Joke'}
-          </Button>
-          <br/>
-          <Button color="success" onClick={newJokeHandleClick}>
-            {'Get a New Joke'}
-          </Button>
-        </CardBody>
-      </Card>
-    </div>
+        <Card
+          body
+          inverse
+          style={{ backgroundColor: '#333', borderColor: '#333' }}
+        >
+          <CardBody>
+            <CardImg src={logo} alt='Joke Header' />
+            <CardText>
+              <h2>{showJoke && getOneJoke.setup}</h2>
+              <h2>{showPunchline && getOneJoke.punchline}</h2>
+            </CardText>
+            <Button color='primary' onClick={handleClick}>
+              {showJoke ? 'GET PUNCHLINE' : 'GET JOKE'}
+            </Button>
+            <br />
+            <Button color='success' onClick={newJokeHandleClick}>
+              {'GET A NEW JOKE'}
+            </Button>
+          </CardBody>
+        </Card>
+      </div>
     </div>
   );
 }
