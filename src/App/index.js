@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import {
+  Card, CardImg, CardText, CardBody, Button
+} from 'reactstrap';
 import getJoke from '../helpers/data/jokeData';
 import './App.scss';
 import logo from '../jokegenjs 2.png';
@@ -12,19 +15,20 @@ function App() {
     setShowJoke(true);
     if (showJoke) {
       setShowPunchline(true);
-      // setGetOneJoke(getOneJoke);
-      // setGetAnotherJoke(getAnotherJoke);
-    // } else if (showPunchline) {
-    //   setShowPunchline(true);
-    //   console.warn(setShowPunchline);
     } else {
-      // setShowJoke(false);
-      getJoke()
-        .then((joke) => {
-          setGetOneJoke(joke);
-          console.warn(joke);
-        });
+      // e.preventDefault();
     }
+  };
+
+  const newJokeHandleClick = (e) => {
+    e.preventDefault();
+    setShowJoke(false);
+    setShowPunchline(false);
+    getJoke()
+      .then((joke) => {
+        setGetOneJoke(joke);
+        // console.warn(joke);
+      });
   };
 
   useEffect(() => {
@@ -36,20 +40,24 @@ function App() {
 
   return (
     <div className='App'>
-        <img src={logo} alt="Joke Header" />
-        <br/>
-        <h2>{showJoke && getOneJoke.setup}</h2>
-        <h2>{showPunchline && getOneJoke.punchline}</h2>
-
-        <button onClick={handleClick}>
-        {showJoke ? showPunchline && 'Get the Punchline' : 'Get a Joke'}
-        </button>
-        <br />
-
-        <button onClick={handleClick}>
-          {showJoke ? 'Get a New Joke' : 'dasdfsadfasdf'}
-        </button>
-
+      <div>
+      <Card body inverse color="info">
+        <CardImg src={logo} alt="Joke Header" />
+        <CardBody>
+          <CardText>
+            <h2>{showJoke && getOneJoke.setup}</h2>
+            <h2>{showPunchline && getOneJoke.punchline}</h2>
+          </CardText>
+          <Button color="primary" onClick={handleClick}>
+            {showJoke ? 'Get a Punchline' : 'Get a Joke'}
+          </Button>
+          <br/>
+          <Button color="success" onClick={newJokeHandleClick}>
+            {'Get a New Joke'}
+          </Button>
+        </CardBody>
+      </Card>
+    </div>
     </div>
   );
 }
