@@ -11,16 +11,19 @@ function App() {
   const handleClick = () => {
     setShowJoke(true);
     if (showJoke) {
-      setShowJoke(false);
+      setShowPunchline(true);
+      // setGetOneJoke(getOneJoke);
+      // setGetAnotherJoke(getAnotherJoke);
+    // } else if (showPunchline) {
+    //   setShowPunchline(true);
+    //   console.warn(setShowPunchline);
+    } else {
+      // setShowJoke(false);
       getJoke()
         .then((joke) => {
           setGetOneJoke(joke);
+          console.warn(joke);
         });
-      // setGetOneJoke(getOneJoke);
-      // setGetAnotherJoke(getAnotherJoke);
-    } else {
-      setShowJoke(true);
-      console.warn(setShowPunchline);
     }
   };
 
@@ -38,13 +41,13 @@ function App() {
         <h2>{showJoke && getOneJoke.setup}</h2>
         <h2>{showPunchline && getOneJoke.punchline}</h2>
 
-        {/* <button onClick={handleClick}>
-          {showPunchline ? 'Get Punchline' : 'text here'}
-        </button> */}
+        <button onClick={handleClick}>
+        {showJoke ? showPunchline && 'Get the Punchline' : 'Get a Joke'}
+        </button>
         <br />
 
         <button onClick={handleClick}>
-          {showJoke ? 'Get a New Joke' : 'Get a Joke'}
+          {showJoke ? 'Get a New Joke' : 'dasdfsadfasdf'}
         </button>
 
     </div>
