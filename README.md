@@ -1,6 +1,5 @@
-# Joke Generator with React
-###[Depoloyed App](https://jdc-joke-generator-react.netlify.app/)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/87758d20-55f8-47b4-9ab6-c7f8588026f8/deploy-status)](https://app.netlify.com/sites/jdc-joke-generator-react/deploys)
+# Joke Generator with React [![Netlify Status](https://api.netlify.com/api/v1/badges/87758d20-55f8-47b4-9ab6-c7f8588026f8/deploy-status)](https://app.netlify.com/sites/jdc-joke-generator-react/deploys)
+##[Depoloyed App](https://jdc-joke-generator-react.netlify.app/)
 
 ## About the User 
 - The ideal user desires to laugh at a good "Dad Joke."
