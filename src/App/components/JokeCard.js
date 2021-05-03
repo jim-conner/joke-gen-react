@@ -38,15 +38,21 @@ export default function JokeCard() {
         inverse
         style={{
           backgroundColor: '#333',
-          borderColor: '#333',
+          borderColor: '#333'
         }}
       >
         <CardBody>
           <CardImg src={logo} alt='Joke Header' />
             <h2>{showJoke && getOneJoke.setup}</h2>
             <h2>{showPunchline && getOneJoke.punchline}</h2>
-          <Button color='success' onClick={handleClick}>
+          <Button
+            color='success'
+            onClick={handleClick}
+            style={{ margin: '10px' }}
+            disabled={showJoke && showPunchline}
+            >
             {showJoke ? 'GET PUNCHLINE' : 'GET JOKE'}
+
           </Button>
           <br />
           <Button color='info' onClick={newJokeHandleClick}>
